@@ -1,0 +1,37 @@
+Akademia C# .NET 2017 (PL)
+Cz³onkowie grupy:
+-Karol Szczepañski
+-Adrian Konkol
+https://github.com/Blackweather/programmer-planner
+Pomys³: Aplikacja - planer dla programistów
+Technologie: C# + WPF
+Funkcje:
+•	Ustalanie terminów
+•	Kalendarz
+•	Zapisywanie wa¿nych algorytmów
+•	Notatki
+•	Uprzedzanie o deadline’ach
+•	Przypomnienia
++³adna szata graficzna
+Podzia³ pracy:
+Karol Szczepañski:
+•	Terminy, kalendarz, notatki, rzeczy zwi¹zane z klas¹ Calendar
+Adrian Konkol:
+•	GUI, algorytmy, deadline, przypomnienia
+
+
+C# .NET Academy 2017 (EN)
+Group members:
+-Karol Szczepañski
+-Adrian Konkol
+https://github.com/Blackweather/programmer-planner
+Idea: App - planner for programmers
+Technologies: C# + WPF
+Features:
+•	Setting deadlines
+•	Calendar
+•	Saving important algorithms
+•	Notes
+•	Deadline handling
+•	Reminders
++nice graphic layout
