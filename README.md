@@ -9,6 +9,7 @@ Członkowie grupy:
 https://github.com/Blackweather/programmer-planner
 Pomysł: Aplikacja - planer dla programistów
 Technologie: C# + WPF
+
 Funkcje:
 •	Ustalanie terminów
 •	Kalendarz
