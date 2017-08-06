@@ -87,6 +87,7 @@
     <Compile Include="DataModels\AppPages.cs" />
     <Compile Include="DataModels\DataBase.cs" />
     <Compile Include="DataModels\Event.cs" />
+    <Compile Include="DataModels\EventList.cs" />
     <Compile Include="Pages\AddEvent.xaml.cs">
       <DependentUpon>AddEvent.xaml</DependentUpon>
     </Compile>

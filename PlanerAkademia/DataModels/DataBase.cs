@@ -88,11 +88,15 @@ namespace PlanerAkademia
         {
             try
             {
-
+                connection = new MySqlConnection(connect);
+                MySqlCommand command = connection.CreateCommand();
+                connection.Open();
+                command.CommandText = "SELECT * FROM `Events`";
+                MySqlDataReader reader = command.ExecuteReader();
             }
             catch
             {
-
+                Console.WriteLine("Cannot show your fucking Events");
             }
         }
 

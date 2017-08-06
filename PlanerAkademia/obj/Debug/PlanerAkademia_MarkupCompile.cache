@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Snooking\documents\visual studio 2015\Projects\PlanerAkademia\PlanerAkademia\obj\Debug\
+D:\akademia\PlanerAkademia\programmer-planner\PlanerAkademia\obj\Debug\
 PlanerAkademia
 none
 false
 DEBUG;TRACE
-C:\Users\Snooking\documents\visual studio 2015\Projects\PlanerAkademia\PlanerAkademia\App.xaml
+D:\akademia\PlanerAkademia\programmer-planner\PlanerAkademia\App.xaml
 1114921260
 
-21801140483
-6797807609
+221604355818
+671492911404
 MainWindow.xaml;Pages\AddEvent.xaml;Pages\ShowEvents.xaml;Pages\SignIn.xaml;Pages\SignUp.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\DatePicker.xaml;Styles\Fonts.xaml;Styles\ListView.xaml;Styles\Texts.xaml;
 
 False

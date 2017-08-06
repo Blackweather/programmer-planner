@@ -21,7 +21,7 @@ namespace PlanerAkademia
             }
             set
             {
-
+                
             }
         }
 
@@ -136,7 +136,10 @@ namespace PlanerAkademia
 
         public int mSecond { get; set; }
 
-        public DateTime mDate { get; set; }
+        public DateTime mDate { get; //{
+                                     // return new DateTime(year, month, day, hour, minute, second);
+                                     //}
+            set; }
         
         /// <summary>
         /// Full Date of the event
