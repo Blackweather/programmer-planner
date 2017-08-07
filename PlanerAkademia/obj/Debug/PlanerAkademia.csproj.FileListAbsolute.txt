@@ -99,3 +99,4 @@ F:\Pobrane\PlanerAkademia_latest\PlanerAkademia\programmer-planner\PlanerAkademi
 F:\Pobrane\PlanerAkademia_latest\PlanerAkademia\programmer-planner\PlanerAkademia\obj\Debug\PlanerAkademia.csproj.GenerateResource.Cache
 F:\Pobrane\PlanerAkademia_latest\PlanerAkademia\programmer-planner\PlanerAkademia\obj\Debug\PlanerAkademia.exe
 F:\Pobrane\PlanerAkademia_latest\PlanerAkademia\programmer-planner\PlanerAkademia\obj\Debug\PlanerAkademia.pdb
+D:\akademia\PlanerAkademia\programmer-planner\PlanerAkademia\bin\Debug\PlanerAkademia.XML
