@@ -12,23 +12,17 @@ namespace PlanerAkademia {
 
         public string Day { get; set; }
 
-        //needed to convert to sql DateTime
-
         public string Hours { get; set; }
 
         public string Minutes { get; set; }
 
         public string Seconds { get; set; }
 
-        //put em all into a nice SQL-Friendly Date string ^^
         public string Date { get; set; }
 
-        //put em all into a nice SQL-Friendly Time string ^^
         public string Time { get; set; }
 
         public string Description { get; set; }
-
-        //put em all into a nice SQL DateAndTime ^^
 
         public string InsertedDateTime { get; set; }
 

@@ -9,7 +9,8 @@
       Title="AddEvent">
         <StackPanel Margin="25">
             <TextBox Text="{Binding name}" Tag="Name of the event"/>
-            <DatePicker DisplayDate="{Binding mDate}"/>
+            <DatePicker DisplayDate="{Binding bDate}"
+                        SelectedDate="{Binding mDate}"/>
         <!-- Time picker -->
             <Grid>
                 <Grid.ColumnDefinitions>

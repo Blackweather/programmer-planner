@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PlanerAkademia {
-    public class ShowEventViewModel : BaseViewModel {
+namespace PlanerAkademia
+{
+    public class ShowEventViewModel : BaseViewModel
+    {
 
         #region PublicMembers
 
@@ -29,23 +30,13 @@ namespace PlanerAkademia {
 
         #region Constructor
 
-        public ShowEventViewModel() {
+        public ShowEventViewModel()
+        {
             //Commands
             LogOutCommand = new RelayCommand(async () => await LogOutAsync());
             AddEventCommand = new RelayCommand(async () => await AddEventAsync());
 
-            //ListView
-            //change to EventList later
             Events = DataBase.ShowEvents();
-
-            //Get events from DB to this list?
-            //Yes
-            //DB <3 
-
-            //Events.Add(new Event("Check", 2000, 1, 1, 10, 37, 0, "Casual Check"));
-            //Events.Add(new Event("You Give Love", 2000, 1, 25, 6, 11, 5, "Jon Bovi"));
-            //Events.Add(new Event("A Bad Name", 2000, 12, 1, 21, 3, 7, "So bad"));
-
         }
 
         #endregion
@@ -53,13 +44,16 @@ namespace PlanerAkademia {
         #region Functions
 
 
-        public async Task AddEventAsync() {
+        public async Task AddEventAsync()
+        {
             ((MainWindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = AppPages.AddEvents;
 
             await Task.Delay(1);
         }
 
-        public async Task LogOutAsync() {
+        public async Task LogOutAsync()
+        {
+            DataBase.UserID = 0;
             ((MainWindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = AppPages.SignIn;
 
             await Task.Delay(1);

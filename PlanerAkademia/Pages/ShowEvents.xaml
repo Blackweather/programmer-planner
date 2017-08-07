@@ -7,20 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="ShowEvents">
-    <StackPanel>
+    <Grid>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Command="{Binding LogOutCommand}" HorizontalAlignment="Left" Content="Log Out"/>
+            <Button Command="{Binding AddEventCommand}" HorizontalAlignment="Right" Content="Add Event"/>
 
-            <Button Command="{Binding LogOutCommand}"  Content="Log Out"/>
-            <Button Command="{Binding AddEventCommand}"  Content="Add Event" Grid.Column="2"/>
-        </Grid>
-
-        <ListView ItemsSource="{Binding Events}"
+        <ListView Grid.Row="1" ItemsSource="{Binding Events}"
                   SelectionMode="Single">
             <ListView.View>
                 <GridView>
@@ -32,6 +28,6 @@
             </ListView.View>
         </ListView>
 
-    </StackPanel>
+    </Grid>
 
 </local:BasePage>

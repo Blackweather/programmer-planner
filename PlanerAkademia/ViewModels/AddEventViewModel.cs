@@ -3,27 +3,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PlanerAkademia
-{
-    public class AddEventViewModel : BaseViewModel
-    {
+namespace PlanerAkademia {
+    public class AddEventViewModel : BaseViewModel {
         #region PrivateMembers
 
         /// <summary>
         /// Hour of the event
         /// </summary>
-        private int hour
-        {
-            get
-            {
+        private int hour {
+            get {
                 int bHour;
-                bHour = int.Parse(mHour);
+                int.TryParse(mHour, out bHour);
                 if (bHour < 0) return 0;
                 if (bHour > 23) return 23;
                 return bHour;
             }
-            set
-            {
+            set {
 
             }
         }
@@ -31,18 +26,15 @@ namespace PlanerAkademia
         /// <summary>
         /// Minute of the event
         /// </summary>
-        private int minute
-        {
-            get
-            {
+        private int minute {
+            get {
                 int bMinute;
-                bMinute = int.Parse(mMinute);
+                int.TryParse(mMinute, out bMinute);
                 if (bMinute < 0) return 0;
                 if (bMinute > 59) return 59;
                 return bMinute;
             }
-            set
-            {
+            set {
 
             }
         }
@@ -50,18 +42,15 @@ namespace PlanerAkademia
         /// <summary>
         /// Second of the event
         /// </summary>
-        private int second
-        {
-            get
-            {
+        private int second {
+            get {
                 int bSecond;
-                bSecond = int.Parse(mSecond);
+                int.TryParse(mSecond, out bSecond);
                 if (bSecond < 0) return 0;
                 if (bSecond > 59) return 59;
                 return bSecond;
             }
-            set
-            {
+            set {
 
             }
         }
@@ -69,14 +58,11 @@ namespace PlanerAkademia
         /// <summary>
         /// Day of the event
         /// </summary>
-        private int day
-        {
-            get
-            {
+        private int day {
+            get {
                 return mDate.Day;
             }
-            set
-            {
+            set {
 
             }
         }
@@ -84,14 +70,11 @@ namespace PlanerAkademia
         /// <summary>
         /// Month of the event
         /// </summary>
-        private int month
-        {
-            get
-            {
+        private int month {
+            get {
                 return mDate.Month;
             }
-            set
-            {
+            set {
 
             }
         }
@@ -99,14 +82,11 @@ namespace PlanerAkademia
         /// <summary>
         /// Year of the event
         /// </summary>
-        private int year
-        {
-            get
-            {
+        private int year {
+            get {
                 return mDate.Year;
             }
-            set
-            {
+            set {
 
             }
         }
@@ -128,13 +108,13 @@ namespace PlanerAkademia
 
         public DateTime mDate { get; set; } = DateTime.Now;
 
+        public DateTime bDate { get; set; }
+
         ///<summary>
         ///Full Event - prepared for everything
         ///</summary>
-        public Event mainEvent
-        {
-            get
-            {
+        public Event mainEvent {
+            get {
                 //just let it all go into Event Constructor fucker
                 return new Event(name, year, month, day, hour, minute, second, description);
             }
@@ -163,8 +143,7 @@ namespace PlanerAkademia
 
         #region Constructor
 
-        public AddEventViewModel()
-        {
+        public AddEventViewModel() {
             AcceptCommand = new RelayCommand(async () => await AcceptAsync());
             CancelCommand = new RelayCommand(async () => await CancelAsync());
         }
@@ -176,8 +155,7 @@ namespace PlanerAkademia
         /// <summary>
         /// Function that execute, when the cancel button is pressed
         /// </summary>
-        public async Task CancelAsync()
-        {
+        public async Task CancelAsync() {
             ((MainWindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = AppPages.ShowEvents;
 
             await Task.Delay(1);
@@ -186,8 +164,7 @@ namespace PlanerAkademia
         /// <summary>
         /// Function that execute, when the accept button is pressed
         /// </summary>
-        public async Task AcceptAsync()
-        {
+        public async Task AcceptAsync() {
             if (name == null || description == null || mHour == null || mMinute == null || mSecond == null || mDate == null) return;
             DataBase.AddEvent(mainEvent);
             ((MainWindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = AppPages.ShowEvents;
