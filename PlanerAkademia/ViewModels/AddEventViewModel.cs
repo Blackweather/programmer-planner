@@ -10,31 +10,17 @@ namespace PlanerAkademia
         #region PrivateMembers
 
         /// <summary>
-        /// Date of the event
-        /// </summary>
-        private DateTime date
-        {
-            get
-            {
-                if (mDate.Year < 1970) return new DateTime(1970, 1, 1);
-                else return mDate;
-            }
-            set
-            {
-                
-            }
-        }
-
-        /// <summary>
         /// Hour of the event
         /// </summary>
         private int hour
         {
             get
             {
-                if (mHour < 0) return 0;
-                else if (mHour > 23) return 23;
-                else return mHour;
+                int bHour;
+                bHour = int.Parse(mHour);
+                if (bHour < 0) return 0;
+                if (bHour > 23) return 23;
+                return bHour;
             }
             set
             {
@@ -49,9 +35,11 @@ namespace PlanerAkademia
         {
             get
             {
-                if (mMinute < 0) return 0;
-                else if (mMinute > 59) return 59;
-                else return mMinute;
+                int bMinute;
+                bMinute = int.Parse(mMinute);
+                if (bMinute < 0) return 0;
+                if (bMinute > 59) return 59;
+                return bMinute;
             }
             set
             {
@@ -66,9 +54,11 @@ namespace PlanerAkademia
         {
             get
             {
-                if (mSecond < 0) return 0;
-                else if (mSecond > 59) return 59;
-                else return mSecond;
+                int bSecond;
+                bSecond = int.Parse(mSecond);
+                if (bSecond < 0) return 0;
+                if (bSecond > 59) return 59;
+                return bSecond;
             }
             set
             {
@@ -83,7 +73,7 @@ namespace PlanerAkademia
         {
             get
             {
-                return date.Day;
+                return mDate.Day;
             }
             set
             {
@@ -98,7 +88,7 @@ namespace PlanerAkademia
         {
             get
             {
-                return date.Month;
+                return mDate.Month;
             }
             set
             {
@@ -113,7 +103,7 @@ namespace PlanerAkademia
         {
             get
             {
-                return date.Year;
+                return mDate.Year;
             }
             set
             {
@@ -130,25 +120,23 @@ namespace PlanerAkademia
         /// </summary>
         public string name { get; set; }
 
-        public int mHour { get; set; }
+        public string mHour { get; set; }
 
-        public int mMinute { get; set; }
+        public string mMinute { get; set; }
 
-        public int mSecond { get; set; }
+        public string mSecond { get; set; }
 
-        public DateTime mDate { get; //{
-                                     // return new DateTime(year, month, day, hour, minute, second);
-                                     //}
-            set; }
-        
-        /// <summary>
-        /// Full Date of the event
-        /// </summary>
-        public DateTime dateTime
+        public DateTime mDate { get; set; } = DateTime.Now;
+
+        ///<summary>
+        ///Full Event - prepared for everything
+        ///</summary>
+        public Event mainEvent
         {
             get
             {
-                return new DateTime(year, month, day, hour, minute, second);
+                //just let it all go into Event Constructor fucker
+                return new Event(name, year, month, day, hour, minute, second, description);
             }
         }
 
@@ -186,7 +174,7 @@ namespace PlanerAkademia
         #region Fuctions
 
         /// <summary>
-        /// Function that execute, when the cancell button is pressed
+        /// Function that execute, when the cancel button is pressed
         /// </summary>
         public async Task CancelAsync()
         {
@@ -200,7 +188,8 @@ namespace PlanerAkademia
         /// </summary>
         public async Task AcceptAsync()
         {
-            DataBase.AddEvent(name, dateTime, description);
+            if (name == null || description == null || mHour == null || mMinute == null || mSecond == null || mDate == null) return;
+            DataBase.AddEvent(mainEvent);
             ((MainWindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = AppPages.ShowEvents;
 
             await Task.Delay(1);

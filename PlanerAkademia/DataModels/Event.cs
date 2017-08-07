@@ -6,53 +6,79 @@ namespace PlanerAkademia {
 
         public string Name { get; set; }
 
-        public string Date { get; set; }
+        public string Year { get; set; }
 
-        public string Time { get; set; }
+        public string Month { get; set; }
+
+        public string Day { get; set; }
 
         //needed to convert to sql DateTime
 
-        public int Hours { get; set; }
+        public string Hours { get; set; }
 
-        public int Minutes { get; set; }
+        public string Minutes { get; set; }
 
-        public int Seconds { get; set; }
+        public string Seconds { get; set; }
+
+        //put em all into a nice SQL-Friendly Date string ^^
+        public string Date { get; set; }
+
+        //put em all into a nice SQL-Friendly Time string ^^
+        public string Time { get; set; }
 
         public string Description { get; set; }
 
-        //string for sql query
+        //put em all into a nice SQL DateAndTime ^^
 
         public string InsertedDateTime { get; set; }
 
         #endregion
 
-        #region PrivateMethods
-        private string CheckIfTimeIsLow(int timeValue, string stringToChange) {
-            if (timeValue < 10) {
-                stringToChange += "0";
-            }
+        #region Converters
 
-            return stringToChange;
+        private string CheckIfTimeIsLow(int timeValue)
+        {
+            string stringToGo = "";
+            if (timeValue < 10)
+            {
+                stringToGo += "0";
+            }
+            stringToGo += timeValue.ToString();
+            return stringToGo;
         }
 
-        private void ConvertToTimeString() {
+        private void ConvertToDateString()
+        {
+            Date = "";
+
+            Date += Year;
+
+            Date += "-";
+
+            Date += Month;
+
+            Date += "-";
+
+            Date += Day;
+        }
+
+        private void ConvertToTimeString()
+        {
             Time = "";
 
-            Time = CheckIfTimeIsLow(Hours, Time);
-            Time += Hours.ToString();
+            Time += Hours;
 
             Time += ":";
 
-            Time = CheckIfTimeIsLow(Minutes, Time);
-            Time += Minutes.ToString();
+            Time += Minutes;
 
             Time += ":";
 
-            Time = CheckIfTimeIsLow(Seconds, Time);
-            Time += Seconds.ToString();
+            Time += Seconds;
         }
 
-        private void ConvertToInsertedDateTime() {
+        private void ConvertToInsertedDateTime()
+        {
 
             InsertedDateTime = "";
 
@@ -65,23 +91,43 @@ namespace PlanerAkademia {
             InsertedDateTime += Time;
         }
 
+        public void InsertedDateTimeToVariables ()
+        {
+            Day = InsertedDateTime.Substring(0, 2);
+            Month = InsertedDateTime.Substring(3, 2);
+            Year = InsertedDateTime.Substring(6, 4);
+            Hours = InsertedDateTime.Substring(11, 2);
+            Minutes = InsertedDateTime.Substring(14, 2);
+            Seconds = InsertedDateTime.Substring(17, 2);
+
+            ConvertToDateString();
+            ConvertToTimeString();
+        }
+
         #endregion
 
         #region Constructor
 
-        public Event(string Name, string Date, int Hours, int Minutes, int Seconds, string Description) {
+        public Event(string Name, int Year, int Month, int Day, int Hours, int Minutes, int Seconds, string Description) {
             this.Name = Name;
 
-            this.Date = Date;
-
-            this.Hours = Hours;
-            this.Minutes = Minutes;
-            this.Seconds = Seconds;
+            this.Year = Year.ToString();
+            this.Month = CheckIfTimeIsLow(Month);
+            this.Day = CheckIfTimeIsLow(Day);
+            this.Hours = CheckIfTimeIsLow(Hours);
+            this.Minutes = CheckIfTimeIsLow(Minutes);
+            this.Seconds = CheckIfTimeIsLow(Seconds);
 
             this.Description = Description;
 
+            ConvertToDateString();
             ConvertToTimeString();
             ConvertToInsertedDateTime();
+        }
+
+        public Event()
+        {
+
         }
 
         #endregion

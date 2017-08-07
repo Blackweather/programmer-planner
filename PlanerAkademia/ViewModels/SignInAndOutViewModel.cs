@@ -6,12 +6,6 @@ namespace PlanerAkademia
 {
     public class SignInAndUpViewModel : BaseViewModel
     {
-        #region PrivateMembers
-
-
-
-        #endregion
-
         #region PublicMembers
 
         /// <summary>

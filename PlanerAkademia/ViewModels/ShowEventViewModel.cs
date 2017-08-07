@@ -11,8 +11,6 @@ namespace PlanerAkademia {
 
         public List<Event> Events { get; set; }
 
-        public string Name { get; set; }
-
         #endregion
 
         #region Commands
@@ -33,17 +31,20 @@ namespace PlanerAkademia {
 
         public ShowEventViewModel() {
             //Commands
-            LogOutCommand = new RelayCommand(async () => LogOutAsync());
-            AddEventCommand = new RelayCommand(async () => AddEventAsync());
+            LogOutCommand = new RelayCommand(async () => await LogOutAsync());
+            AddEventCommand = new RelayCommand(async () => await AddEventAsync());
 
             //ListView
-            Events = new List<Event>();
+            //change to EventList later
+            Events = DataBase.ShowEvents();
 
             //Get events from DB to this list?
+            //Yes
+            //DB <3 
 
-            Events.Add(new Event("Check", "2000-01-01", 10, 37, 0, "Casual Check"));
-            Events.Add(new Event("You Give Love", "2000-01-25", 6, 11, 5, "Jon Bovi"));
-            Events.Add(new Event("A Bad Name", "2000-12-01", 21, 3, 7, "So bad"));
+            //Events.Add(new Event("Check", 2000, 1, 1, 10, 37, 0, "Casual Check"));
+            //Events.Add(new Event("You Give Love", 2000, 1, 25, 6, 11, 5, "Jon Bovi"));
+            //Events.Add(new Event("A Bad Name", 2000, 12, 1, 21, 3, 7, "So bad"));
 
         }
 

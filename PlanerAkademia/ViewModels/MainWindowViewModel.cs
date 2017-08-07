@@ -71,7 +71,7 @@ namespace PlanerAkademia
         /// <summary>
         /// Information about which page is the user at
         /// </summary>
-        public AppPages CurrentPage { get; set; } = AppPages.SignIn;
+        public AppPages CurrentPage { get; set; } = AppPages.ShowEvents;
         
         #endregion
 
